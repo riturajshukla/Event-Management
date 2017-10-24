@@ -28,3 +28,23 @@ needed for an HTTP response, and renders the view using these data. (The data ar
 * `Procfile` - this is how you tell Heroku how to run your code. You shouldn't need to mess with this one.
 * `.eslintrc.json` - this is where we customize the rules for how your code gets linted (checked for style/errors) - most of them come from the `eslint-config-airbnb` package. You also shouldn't need to modify this one (please don't, actually). If you're working on cloud9, their built-in editor will automatically use your eslint configuration. If you're working in another editor, it will depend on your setup.
 * `README.md` - this file :)
+
+## Installing dependencies
+
+To install dependencies, run `yarn install`. Of course, you'll want yarn installed.
+You can install that with `npm install yarn` optionally adding the `-g` flag if you
+want to install it "globally", which will depend on your preferences.
+
+
+## Running the code
+
+To run this application in a development environment, use the command `yarn dev`.
+That will run the "dev" script defined in `package.json`, which itself runs
+[nodemon](https://github.com/remy/nodemon). Nodemon will automatically restart
+your application when it detects changes to your code. Each time it restarts your
+application it will run [ESLint](https://eslint.org) on your code first to detect
+common problems and enforce the JavaScript style specified in your `.eslintrc.json`
+file.
+
+In production, you should start the app with the command either `yarn start` or
+`npm start`. On Heroku, this will happen by default, in the absense of a Procfile.
