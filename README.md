@@ -1,4 +1,4 @@
-## Starter code for simple MVC Node.js homework
+## Starter code for simple MVC Node.js class project
 
 This is a minimal [Node.js](http://nodejs.org/)
 application that shows very basic "model view controller"
