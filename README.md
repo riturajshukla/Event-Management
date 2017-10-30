@@ -38,7 +38,8 @@ want to install it "globally", which will depend on your preferences.
 
 ## Running the code
 
-To run this application in a development environment, use the command `yarn dev`.
+To run this application in a development environment, use the command `yarn dev`
+or `npm run dev`.
 That will run the "dev" script defined in `package.json`, which itself runs
 [nodemon](https://github.com/remy/nodemon). Nodemon will automatically restart
 your application when it detects changes to your code. Each time it restarts your
