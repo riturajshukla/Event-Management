@@ -9,6 +9,7 @@ const app = express();
 // locally instead of a dependency that was installed as
 // specified in our `package.json` file, like "express".
 const indexControllers = require('./controllers/index.js');
+const aboutControllers = require('./controllers/about.js');
 
 // Configure our "templating engine", which is
 // Mozilla's "Nunjucks" in this case.
@@ -26,6 +27,7 @@ app.set('view engine', 'html');
 
 // Now, attach our "controllers" to our "routes".
 app.get('/', indexControllers.index);
+app.get('/about', aboutControllers.about);
 
 // Start up the application and listen on the specified
 // port, or default to port 4000.
