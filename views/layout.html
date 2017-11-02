@@ -4,16 +4,20 @@
     <meta charset="utf-8">
     <title>{{title}}</title>
   </head>
+  <link rel="stylesheet" href="" type="text/css" />
   <body>
     <header>
-      This is the header.
+      <img src="/images/logo.png" alt="logo">
     </header>
     <div>
       {% block body %}
       {% endblock %}
     </div>
     <footer>
-      This is the footer.
+      <ul class="hlist">
+        <li><a href="about_us">About Us</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
     </footer>
   </body>
 </html>
