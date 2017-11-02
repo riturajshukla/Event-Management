@@ -9,6 +9,9 @@ const app = express();
 // locally instead of a dependency that was installed as
 // specified in our `package.json` file, like "express".
 const indexControllers = require('./controllers/index.js');
+const aboutControllers = require('./controllers/about.js');
+
+
 // Configure our "templating engine", which is
 // Mozilla's "Nunjucks" in this case.
 const nunjucks = require('nunjucks');
@@ -25,6 +28,8 @@ app.set('view engine', 'html');
 
 // Now, attach our "controllers" to our "routes".
 app.get('/', indexControllers.index);
+app.get('/about', aboutControllers.about);
+
 app.get('/index.html', indexControllers.index);
 var serveStatic = require('serve-static')
 app.use(serveStatic('views'))
