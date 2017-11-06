@@ -2,5 +2,19 @@
 {% extends "layout.html" %}
 
 {% block body %}
-Welcome to Golden Wrath's Event Management System
+
+<ul id="events">
+{% for i in range(0, items.length) -%}
+<li>
+    {{ items[i].title}} <br>
+    {{ items[i].location }}
+    {{ items[i].date }}
+    {{ items[i].time }}
+</li>
+{%- endfor %}    
+</ul>
+
+
+</p>
+
 {% endblock %}

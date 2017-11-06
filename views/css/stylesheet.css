@@ -1,0 +1,49 @@
+ul.hlist li
+{
+    display: inline;
+    margin-left: 20px;
+}
+div#footer
+{
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-left: -35px;
+    
+}
+
+body
+{ 
+    max-width: 500px;
+    margin: auto; 
+    text-align: center;
+}
+a:link {
+    text-decoration: none;
+}
+img#logo
+{
+    margin: auto;
+    width: 150px;
+    display: block;
+    
+}
+div#title
+{
+margin-top: 0px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+ul#events li
+{
+text-align:left;
+    
+}
