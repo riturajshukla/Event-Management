@@ -3,7 +3,7 @@
 // handles a request, writing the response.
 function index(request, response) {
     
-var mysql = require('mysql');
+/*var mysql = require('mysql');
 
 var con = mysql.createConnection
 ({
@@ -30,8 +30,8 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Query executed");
     console.log(result); }); */
-    
-});
+//});
+    response.render('index', { title: 'Golden Wrath Event Management'});
 
 }
 
