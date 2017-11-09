@@ -4,6 +4,14 @@
 {% block body %}
 
 <ul id="events">
+ {% for i in range(0, items.length) -%}
+<li>
+    {{ items[i].title}} <br>
+    {{ items[i].location }}
+    {{ items[i].date }}
+    {{ items[i].time }}
+</li>
+{%- endfor %}    
 </ul>
 
 
