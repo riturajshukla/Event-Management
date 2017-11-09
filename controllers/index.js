@@ -8,7 +8,8 @@ const con = {
   user: 'xrxlcgkeiqnbpa',
   password: '4bd2b4bff69cb3c5ad99eb6297dee3ea3b0e4cb9db5d0e53061f18f49165762d',
   database: 'ddvbg4h4mr6qc7',
-  port:'5432'
+  port:'5432',
+  ssl: "TRUE"
 
 };
 
@@ -33,12 +34,12 @@ db.connect()
 
 var sql = "select * from events";
 var sql2 = "DROP TABLE events";
-var sql3 = "CREATE TABLE events (id SERIA PRIMARY KEYL, title VARCHAR(255), location VARCHAR(255), imageurl VARCHAR(255), date VARCHAR(15), time VARCHAR(15))";
+var sql3 = "CREATE TABLE events (id SERIAL PRIMARY KEY, title VARCHAR(255), location VARCHAR(255), imageurl VARCHAR(255), date VARCHAR(15), time VARCHAR(15))";
 var sql4 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Party Night', 'New Haven', 'event1.jpg','20/Nov/2017','2:00pm')";
 var sql5 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Disco Night', 'New Haven', 'event2.jpg','21/Nov/2017','10:00pm')";
-db.any(sql3)
+db.any(sql)
     .then(data => {
-        console.log('Executed', data[0].id); // print data;
+        console.log('Executed'); // print data;
         response.render('index', { title: 'Golden Wrath Event Management', items: data});
 })
     .catch(error => {
