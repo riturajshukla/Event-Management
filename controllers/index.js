@@ -9,7 +9,7 @@ const con = {
   password: '4bd2b4bff69cb3c5ad99eb6297dee3ea3b0e4cb9db5d0e53061f18f49165762d',
   database: 'ddvbg4h4mr6qc7',
   port:'5432',
-  ssl: "TRUE"
+  ssl: 'TRUE'
 
 };
 
