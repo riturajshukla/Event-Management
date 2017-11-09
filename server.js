@@ -11,6 +11,8 @@ const app = express();
 const indexControllers = require('./controllers/index.js');
 const aboutControllers = require('./controllers/about.js');
 const neweventControllers = require('./controllers/newevent.js');
+const eventControllers = require('./controllers/events.js');
+
 
 // Configure our "templating engine", which is
 // Mozilla's "Nunjucks" in this case.
@@ -29,7 +31,11 @@ app.set('view engine', 'html');
 // Now, attach our "controllers" to our "routes".
 app.get('/', indexControllers.index);
 app.get('/about', aboutControllers.about);
+<<<<<<< HEAD
 app.get('/events/new', neweventControllers.newevent);
+=======
+app.get('/events/:eventID', eventControllers.eventDetail);
+>>>>>>> 89de63894a1f408706588ad09e1751994b241e71
 
 app.get('/index.html', indexControllers.index);
 var serveStatic = require('serve-static')
