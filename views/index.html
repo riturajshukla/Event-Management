@@ -3,9 +3,9 @@
 
 {% block body %}
 
-<ul class="event" id="events">
+<ul id="events">
  {% for i in range(0, items.length) -%}
-<li id="{{i}}">
+<li class="event" id="{{i}}">
     <a href="" id="title">{{ items[i].title}}</a> <br>
     {{ items[i].location }}
     {{ items[i].date }}
