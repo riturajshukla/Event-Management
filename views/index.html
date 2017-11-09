@@ -3,18 +3,18 @@
 
 {% block body %}
 
-<ul id="events">
+<ul class="event" id="events">
  {% for i in range(0, items.length) -%}
-<li>
-    {{ items[i].title}} <br>
+<li id="{{i}}">
+    <a href="" id="title">{{ items[i].title}}</a> <br>
     {{ items[i].location }}
     {{ items[i].date }}
-    {{ items[i].time }}
+    <time>{{ items[i].time }}</time>
 </li>
 {%- endfor %}    
 </ul>
 
-<a href="/events/new"><b>New Event</b></a></a>
+<a href="/events/new" id="new"><b>New Event</b></a></a>
 </p>
 
 {% endblock %}
