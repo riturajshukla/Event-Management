@@ -32,6 +32,7 @@ app.set('view engine', 'html');
 app.get('/', indexControllers.index);
 app.get('/about', aboutControllers.about);
 app.get('/events/new', neweventControllers.newevent);
+app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
 
 
