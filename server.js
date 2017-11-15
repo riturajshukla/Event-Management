@@ -1,8 +1,10 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Import our controllers from their files. Notice how we're
 // giving the `require` built-in function the path a file

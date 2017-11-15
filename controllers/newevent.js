@@ -1,3 +1,4 @@
+const eventModels = require('../models/events.js');
 const validator = require('validator');
 
 // Create a function which is a "controller", it
@@ -35,11 +36,27 @@ function newevent(request, response) {
     const errors = [];
     if (request.method === 'POST') {
         if (validator.isLength(request.body.title, { min: 1, max: 50 }) === false) {
-            errors.push('Bad title');
+            errors.push('Bad title - BOOO ON YOU');
         }
+        if (validator.isLength(request.body.location, { min: 1, max: 50 }) === false ) {
+            errors.push('Bad location - SHAME');
+        }
+        if (validator.isURL(request.body.image) === false ) {
+            errors.push('That is not a URL');
+        }
+        if (validator.matches(request.body.image, ".png") === false &&
+            validator.matches(request.body.image, ".jpg") === false &&
+            validator.matches(request.body.image, ".gif") === false) {
+            errors.push('Definitely not an image');
+        }
+        
+        if (errors.length === 0) {
+            //CONNECTION TO DATABASE LATER
+            }
     }
     response.render('newevent', {
         possibleDateData,
+        errors,
     });
 }
 
