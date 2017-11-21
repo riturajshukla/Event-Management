@@ -1,7 +1,39 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <h1>
+
+  
+  <h1 id="title">
     {{event.title}}
   </h1>
+  <img src="/images/{{event.imageurl}}" id="image"><br>
+  
+  <table>
+    <tr>
+  <td>
+    <div class="event-details">
+      <span id="location"><b>Location: </b> {{event.location}}</span> <br>
+      <span id="date"><b> Date: </b></b>{{event.date}} <br> <b>Time: </b> {{event.time}}</span> <br>
+      </div>
+    </td>
+  <td>
+    <a id="rsvp" href="resvp">RSVP</a>
+  </td>
+  </table>
+  
+  <div id="attendeeslist">
+  <hr/>
+    
+  <span id="attendeesheading"><b>Attendees: {{attendees.length}} <br> </b></span>
+  
+  
+  <ul id="attendees">
+   {% for i in range(0, attendees.length) -%}
+  <li class="list-group-item">{{attendees[i].emailid}}</li>
+  {%- endfor %}
+  </ul>
+  
+  </div>
+  <a id="donate" href="/donate">Contribute</a>
+  
 {% endblock %}

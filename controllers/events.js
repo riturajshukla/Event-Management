@@ -1,4 +1,5 @@
 const eventModels = require('../models/events.js');
+const attendeeModels = require('../models/attendees.js');
 
 // Create a function which is a "controller", it
 // handles a request, writing the response.
@@ -7,12 +8,15 @@ function eventDetail(request, response) {
     const event = eventModels.getById(eventID);
     if (event === null) {
         response.status(404).send('This is not a thing');
-    } else {
+    } 
+    else {
         const contextData = {
             title: 'This is an awesome event detail page',
             event: eventModels.getById(eventID),
+            attendees: attendeeModels.attendeesgetById(eventID)
         };
-        response.render('event-detail', contextData);
+        
+    response.render('event-detail', contextData);
     }
 }
 

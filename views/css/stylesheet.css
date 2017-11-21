@@ -5,7 +5,7 @@ ul.hlist li
 }
 div#footer
 {
-    max-width: 500px;
+    max-width: 600px;
     text-align: center;
     margin: auto;
     margin-left: -35px;
@@ -14,12 +14,13 @@ div#footer
 
 body
 { 
-    max-width: 500px;
+    max-width: 600px;
     margin: auto; 
     text-align: center;
 }
 a:link {
     text-decoration: none;
+    color: 000;
 }
 img#logo
 {
@@ -45,9 +46,65 @@ hr {
 ul#events li
 {
 text-align:left;
+padding-bottom: 10px;
     
 }
+img#image
+{
+    width: 500px;
+}
 
+div.event-details
+{
+ text-align: left;
+ padding-left: 100px;
+}
 h1 {
-    font-size: 300%;
+    font-size: 150%;
+}
+span#location
+{
+ font-size: 20px;
+}
+span#date
+{
+    font-size: 20px;
+}
+a#title
+{
+    font-size: 22px;
+}
+span#headermessage
+{
+    font-size: 28px;
+}
+a#rsvp
+{
+    font-size: 22px;
+    padding-left: 150px;
+    font-weight: bold;
+}
+
+span#attendeesheading
+{
+    font-size: 22px;
+}
+
+div#attendeelist
+{
+    padding-top: 50px;
+    width:600px;
+}
+
+ul#attendees
+{
+ width:600px;
+ padding: 0;
+}
+ul#attendees li
+{
+    border: none;
+    text-align: center;
+    height: 35px;
+    font-size:15px;
 }

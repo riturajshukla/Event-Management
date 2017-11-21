@@ -35,8 +35,15 @@ db.connect()
 var sql = "select * from events";
 var sql2 = "DROP TABLE events";
 var sql3 = "CREATE TABLE events (id SERIAL PRIMARY KEY, title VARCHAR(255), location VARCHAR(255), imageurl VARCHAR(255), date VARCHAR(15), time VARCHAR(15))";
-var sql4 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Party Night', 'New Haven', 'event1.jpg','20/Nov/2017','2:00pm')";
-var sql5 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Disco Night', 'New Haven', 'event2.jpg','21/Nov/2017','10:00pm')";
+var sql4 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('New Century Party on Mars', 'Mars', 'event0.jpg','1/January/2100','19:00pm')";
+var sql5 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Underwater Party', 'Pacific Ocean', 'event1.jpg','5/May/2018','17:00pm')";
+var sql6=" ALTER SEQUENCE events_id_seq minvalue 0 RESTART WITH 0 INCREMENT BY 1 ";
+
+var sql7 = "CREATE TABLE attendees (emailid VARCHAR(255), regevent INT)";
+var sql8 = "INSERT INTO attendees (emailid, regevent) VALUES ('rituraj.shukla@yale.edu', '0')";
+var sql9 = "DELETE FROM attendees where emailid = 'rituraj.shukla@yale.edu'";
+
+
 db.any(sql)
     .then(data => {
         console.log('Executed'); // print data;

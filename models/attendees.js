@@ -1,5 +1,5 @@
 'use strict';
-
+var allattendees=[];
 
 const con = {
   host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
@@ -11,7 +11,6 @@ const con = {
 
 };
 
-var allEvents = [];
 
 const options = {
     noWarnings: true
@@ -28,37 +27,35 @@ db.connect()
     })
     .catch(function (error) {
         console.log("ERROR:", error.message);
-    });    
+    });
 
-var sql = "select * from events";
-
+var sql = "select * from attendees";
 db.any(sql)
     .then(data => {
-        allEvents=data;
-        // print data;
-})
+       allattendees=data;
+    //   console.log(allattendees);
+         // print data;
+    })
     .catch(error => {
-        console.log('ERROR:', error); // print the error;
+        console.log('ERROR:', error);
     });
 
 pgp.end();
 
-/*
-
-/**
- * Returns the first event that has a particular id.
- */
-function getById(id) {
-
-    for (let i = 0; i < allEvents.length; i += 1) {
-        if (id === allEvents[i].id) {
-            return allEvents[i];
+function attendeesgetById(id) {
+    var attendeelist=[];
+    var j=0;
+    for (let i = 0; i < allattendees.length; i += 1) 
+    {
+        if (id === allattendees[i].regevent) 
+        {
+            attendeelist[j]=allattendees[i];
+            j=j+1;
         }
     }
-    return null;
+    return attendeelist;
 }
 
 module.exports = {
-    all: allEvents,
-    getById,
+    attendeesgetById,
 };
