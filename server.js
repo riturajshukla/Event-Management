@@ -1,8 +1,10 @@
 'use strict';
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Import our controllers from their files. Notice how we're
 // giving the `require` built-in function the path a file
@@ -32,6 +34,7 @@ app.set('view engine', 'html');
 app.get('/', indexControllers.index);
 app.get('/about', aboutControllers.about);
 app.get('/events/new', neweventControllers.newevent);
+app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
 
 
