@@ -47,6 +47,7 @@ ul#events li
 {
 text-align:left;
 padding-bottom: 10px;
+font-size:15px;
     
 }
 img#image
@@ -57,18 +58,16 @@ img#image
 div.event-details
 {
  text-align: left;
- padding-left: 100px;
+ padding-left: 50px;
+ padding-top: 20px;
 }
+
 h1 {
-    font-size: 150%;
+    font-size: 22px;
 }
-span#location
+span.date
 {
- font-size: 20px;
-}
-span#date
-{
-    font-size: 20px;
+    font-size: 15px;
 }
 a#title
 {
@@ -78,11 +77,9 @@ span#headermessage
 {
     font-size: 28px;
 }
-a#rsvp
+label#rsvp
 {
-    font-size: 22px;
-    padding-left: 150px;
-    font-weight: bold;
+    font-size:15px;
 }
 
 span#attendeesheading
@@ -101,10 +98,16 @@ ul#attendees
  width:600px;
  padding: 0;
 }
+
 ul#attendees li
 {
     border: none;
     text-align: center;
     height: 35px;
     font-size:15px;
+}
+
+table#event-details td.right
+{
+    padding-left: 95px;
 }

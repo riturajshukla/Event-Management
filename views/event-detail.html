@@ -8,19 +8,42 @@
   </h1>
   <img src="/images/{{event.imageurl}}" id="image"><br>
   
-  <table>
-    <tr>
-  <td>
-    <div class="event-details">
-      <span id="location"><b>Location: </b> {{event.location}}</span> <br>
-      <span id="date"><b> Date: </b></b>{{event.date}} <br> <b>Time: </b> {{event.time}}</span> <br>
-      </div>
-    </td>
-  <td>
-    <a id="rsvp" href="resvp">RSVP</a>
+  <div class="event-details">
+    
+  <table id="event-details">
+  <tr>
+  <td class="left">
+      <span class="date"><b>Location: </b> {{event.location}}</span> <br>
   </td>
+  <td class="right">
+    <label id="rsvp" ><b>RSVP</b> <i>(enter email)</i>:</label> 
+  </td>
+  </tr>
+  
+  <tr>
+  <td class="left">    
+      <span id="date"><b> Date: </b></b>{{event.date}}</span>
+  </td>
+  <td class="right">
+    <form action="/events/rsvp" method="post">
+      <input type="email" name="email" id="email"></input>
+      <input type="hidden" name="eventid" value="{{event.id}}"></input>
+      <input name="submit" type="submit">
+    </form>
+  </td>
+  </tr>
+  
+  <tr>
+  <td class="left">
+    <span class="date"><b>Time: </b> {{event.time}}</span>
+  </td>
+  <td class="right"></td>
+  </tr>
+  
   </table>
   
+  </div>
+    
   <div id="attendeeslist">
   <hr/>
     
