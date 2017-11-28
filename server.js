@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // specified in our `package.json` file, like "express".
 const indexControllers = require('./controllers/index.js');
 const aboutControllers = require('./controllers/about.js');
+const donateControllers = require('./controllers/donate.js');
 const neweventControllers = require('./controllers/newevent.js');
 const eventControllers = require('./controllers/events.js');
 const rsvpControllers = require('./controllers/rsvp.js');
@@ -34,6 +35,7 @@ app.set('view engine', 'html');
 // Now, attach our "controllers" to our "routes".
 app.get('/', indexControllers.index);
 app.get('/about', aboutControllers.about);
+app.get('/donate', donateControllers.donate);
 app.get('/events/new', neweventControllers.newevent);
 app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
