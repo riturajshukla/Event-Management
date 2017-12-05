@@ -32,7 +32,8 @@ function eventDetail(request, response) {
                 {
                 title: event.title,
                 event: event,
-                attendees: attendees
+                attendees: attendees,
+                donation: eventModels.abTest()
                 };
             response.render('event-detail', contextData);
         });
