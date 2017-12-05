@@ -20,7 +20,6 @@ function eventDetail(request, response) {
                 attendeeModels.attendeesgetById(eventID, function(attendeesdata) {
                     attendees = attendeesdata;
                     console.log('task 2');
-                    console.log(attendees);
                     callback();
                 });
             }
@@ -30,7 +29,7 @@ function eventDetail(request, response) {
             if (err) return (err);
             const contextData = 
                 {
-                title: 'This is an awesome event detail page',
+                title: event.title,
                 event: event,
                 attendees: attendees
                 };
