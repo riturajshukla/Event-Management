@@ -13,7 +13,8 @@ function eventDetail(request, response) {
         const contextData = {
             title: 'This is an awesome event detail page',
             event: eventModels.getById(eventID),
-            attendees: attendeeModels.attendeesgetById(eventID)
+            attendees: attendeeModels.attendeesgetById(eventID),
+            donation: eventModels.abTest(),
         };
         
     response.render('event-detail', contextData);

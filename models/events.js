@@ -58,7 +58,19 @@ function getById(id) {
     return null;
 }
 
+function abTest() {
+    var random_boolean = Math.random() >= 0.5;
+    var linkText = 'TEST';
+    if (random_boolean) {
+        linkText = 'Donate';
+    } else {
+        linkText = 'Support';
+    }
+    return linkText;
+}
+
 module.exports = {
     all: allEvents,
     getById,
+    abTest,
 };
