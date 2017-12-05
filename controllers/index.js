@@ -26,7 +26,7 @@ const db=pgp(con);
 db.connect()
     .then(function (obj) {
         obj.done();
-        console.log("Connected!");// success, release connection;
+        console.log("Index Connected!");// success, release connection;
     })
     .catch(function (error) {
         console.log("ERROR:", error.message);
@@ -46,7 +46,7 @@ var sql9 = "DELETE FROM attendees where emailid = 'rituraj.shukla@yale.edu'";
 
 db.any(sql)
     .then(data => {
-        console.log('Executed'); // print data;
+        console.log('Index Executed'); // print data;
         response.render('index', { title: 'Golden Wrath Event Management', items: data});
 })
     .catch(error => {
@@ -60,10 +60,6 @@ pgp.end();
 //  var sql = "DROP TABLE events";
 //  var sql = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Party Night', 'New Haven', 'event1.jpg','20/Nov/2017','2:00pm')";
 //    var sql2 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('Disco Night', 'New Haven', 'event2.jpg','21/Nov/2017','10:00pm')";
-
-
-
-
 
 
 

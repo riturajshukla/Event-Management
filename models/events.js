@@ -1,5 +1,6 @@
-'use strict';
+var allEvents = [];
 
+function getById(id, callback) {
 
 const con = {
   host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
@@ -10,8 +11,6 @@ const con = {
   ssl: 'TRUE'
 
 };
-
-var allEvents = [];
 
 const options = {
     noWarnings: true
@@ -24,41 +23,39 @@ const db=pgp(con);
 db.connect()
     .then(function (obj) {
         obj.done();
-        console.log("Connected!");// success, release connection;
+        console.log("Events Connected!");// success, release connection;
     })
     .catch(function (error) {
         console.log("ERROR:", error.message);
     });    
 
-var sql = "select * from events";
+
+var sql = "select * from events where id="+id;
 
 db.any(sql)
     .then(data => {
         allEvents=data;
-        // print data;
-})
+        callback(data);
+        console.log("Events Executed");
+  
+    })
     .catch(error => {
         console.log('ERROR:', error); // print the error;
+   
     });
+     pgp.end();
 
-pgp.end();
-
-/*
-
-/**
- * Returns the first event that has a particular id.
- */
-function getById(id) {
-
-    for (let i = 0; i < allEvents.length; i += 1) {
-        if (id === allEvents[i].id) {
-            return allEvents[i];
-        }
-    }
-    return null;
 }
 
 module.exports = {
-    all: allEvents,
-    getById,
+    getById
 };
+
+
+/*for (let i = 0; i < allEvents.length; i += 1) {
+    if (id === allEvents[i].id) {
+        return allEvents[i];
+        }
+    }
+    return null;
+*/

@@ -1,7 +1,9 @@
 'use strict';
 var allattendees=[];
 
-const con = {
+function attendeesgetById(id, callback) {
+    
+    const con = {
   host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
   user: 'xrxlcgkeiqnbpa',
   password: '4bd2b4bff69cb3c5ad99eb6297dee3ea3b0e4cb9db5d0e53061f18f49165762d',
@@ -23,17 +25,19 @@ const db=pgp(con);
 db.connect()
     .then(function (obj) {
         obj.done();
-        console.log("Connected!");// success, release connection;
+        console.log("Attendees Connected!");// success, release connection;
     })
     .catch(function (error) {
         console.log("ERROR:", error.message);
     });
 
-var sql = "select * from attendees";
+var sql = "select * from attendees where regevent="+id;
+console.log(sql);
 db.any(sql)
     .then(data => {
        allattendees=data;
-    //   console.log(allattendees);
+       callback(data);
+       console.log("Attendees Executed");
          // print data;
     })
     .catch(error => {
@@ -41,8 +45,12 @@ db.any(sql)
     });
 
 pgp.end();
+}
 
-function attendeesgetById(id) {
+module.exports = {
+    attendeesgetById,
+};
+/*    
     var attendeelist=[];
     var j=0;
     for (let i = 0; i < allattendees.length; i += 1) 
@@ -53,9 +61,4 @@ function attendeesgetById(id) {
             j=j+1;
         }
     }
-    return attendeelist;
-}
-
-module.exports = {
-    attendeesgetById,
-};
+*/
