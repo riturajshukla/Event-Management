@@ -17,6 +17,7 @@ const neweventControllers = require('./controllers/newevent.js');
 const eventControllers = require('./controllers/events.js');
 const rsvpControllers = require('./controllers/rsvp.js');
 const newsubmitControllers = require('./controllers/newsubmit.js');
+const apiControllers = require('./controllers/api.js');
 
 
 // Configure our "templating engine", which is
@@ -42,6 +43,7 @@ app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
 app.post('/events/rsvp', rsvpControllers.rsvp);
 app.post('/events/newsubmit', newsubmitControllers.newsubmit);
+app.get('/api/events', apiControllers.api);
 
 
 app.get('/index.html', indexControllers.index);

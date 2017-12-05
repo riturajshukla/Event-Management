@@ -1,9 +1,5 @@
-var allEvents = [];
 
-function getById(id, callback) {
-    
-    
-    
+function apigetById(query, callback) {
 
 const con = {
   host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
@@ -26,20 +22,25 @@ const db=pgp(con);
 db.connect()
     .then(function (obj) {
         obj.done();
-        console.log("Events Connected!");// success, release connection;
+        console.log("API Events Connected!");// success, release connection;
     })
     .catch(function (error) {
         console.log("ERROR:", error.message);
     });    
 
 
-    var sql = "select * from events where id="+id;
-
-console.log(sql);
-db.any(sql)
+    if(query)
+    {
+    var sql = "select * from events where LOWER(title) like '%"+query+"%'";
+    }
+    else
+    {
+        var sql = "select * from events ";
+    }
+    console.log(sql);
+    db.any(sql)
     .then(data => {
-        allEvents=data;
-        console.log("Events Executed");
+        console.log("API Events Executed");
         callback(data);
 
   
@@ -52,18 +53,6 @@ db.any(sql)
 
 }
 
-function abTest() {
-    var random_boolean = Math.random() >= 0.5;
-    var linkText = 'TEST';
-    if (random_boolean) {
-        linkText = 'Donate';
-    } else {
-        linkText = 'Support';
-    }
-    return linkText;
-}
-
 module.exports = {
-    getById,
-    abTest,
+    apigetById,
 };

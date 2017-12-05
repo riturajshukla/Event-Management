@@ -1,0 +1,2 @@
+<title>API</title>
+{"events":[{% for i in range(0, event.length) -%}{"id":{{event[i].id}},"title":"{{event[i].title}}","location":"{{event[i].location}}","attendees":[{{attendees[i]}}],"image":"{{event[i].imageurl}}","time":"{{event[i].date+" "+event[i].time}}"}{% if i!==event.length-1 %},{% endif %}{%- endfor %}]}
