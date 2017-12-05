@@ -1,8 +1,7 @@
 const eventModels = require('../models/events.js');
 const attendeeModels = require('../models/attendees.js');
 var asyncStuff = require('async');
-// Create a function which is a "controller", it
-// handles a request, writing the response.
+
 function eventDetail(request, response) {
     
     const eventID = parseInt(request.params.eventID, 10);
@@ -26,8 +25,7 @@ function eventDetail(request, response) {
                 });
             }
         ],
-        
-     
+
     function(err) { //This function gets called after the two tasks have called their "task callbacks"
             if (err) return (err);
             const contextData = 
@@ -41,11 +39,6 @@ function eventDetail(request, response) {
     
     
 }
-
 module.exports = {
     eventDetail,
 };
-
-
-
-    

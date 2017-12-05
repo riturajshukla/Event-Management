@@ -2,7 +2,7 @@
 
 {% block body %}
 
-  
+
   <h1 id="title">
     {{event.title}}
   </h1>
@@ -13,7 +13,7 @@
   <table id="event-details">
   <tr>
   <td class="left">
-      <span class="date"><b>Location: </b> {{event.location}}</span> <br>
+      <span id="location"><b>Location: </b> {{event.location}}</span> <br>
   </td>
   <td class="right">
     <label id="rsvp" ><b>RSVP</b> <i>(enter email)</i>:</label> 
@@ -41,11 +41,11 @@
   </tr>
   
   </table>
-  
+
   </div>
   <div>
-  Want to contribute? <a href="/donate" id="donate">Donate</a> now!
-  </div>  
+  Want to contribute? <a href="/donate" id="donate">{{donation}}</a> now!
+  </div>
   <div id="attendeeslist">
   <hr/>
     

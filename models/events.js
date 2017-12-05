@@ -47,15 +47,18 @@ db.any(sql)
 
 }
 
-module.exports = {
-    getById
-};
-
-
-/*for (let i = 0; i < allEvents.length; i += 1) {
-    if (id === allEvents[i].id) {
-        return allEvents[i];
-        }
+function abTest() {
+    var random_boolean = Math.random() >= 0.5;
+    var linkText = 'TEST';
+    if (random_boolean) {
+        linkText = 'Donate';
+    } else {
+        linkText = 'Support';
     }
-    return null;
-*/
+    return linkText;
+}
+
+module.exports = {
+    getById,
+    abTest,
+};
