@@ -43,7 +43,7 @@ var sql7 = "CREATE TABLE attendees (emailid VARCHAR(255), regevent INT)";
 var sql8 = "INSERT INTO attendees (emailid, regevent) VALUES ('rituraj.shukla@yale.edu', '0')";
 var sql9 = "DELETE FROM attendees where emailid = 'rituraj.shukla@yale.edu'";
 var sql10 ="UPDATE events set imageurl ='/images/event2.jpg' where id=2";
-var sql11 ="DELETE from events where id =6";
+var sql11 ="DELETE from events where title='msmnad'";
 
 db.any(sql)
     .then(data => {

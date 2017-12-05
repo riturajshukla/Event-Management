@@ -2,7 +2,7 @@
 // Create a function which is a "controller", it
 // handles a request, writing the response.
 function newsubmit(request, response) {
-
+var maxid=[];
 var etitle=request.body.title;
 var elocation=request.body.location;
 var eimageurl=request.body.image;
@@ -46,14 +46,34 @@ else
             .catch(function (error) {
                 console.log("ERROR:", error.message);
             });    
-        
-        
+    
        var sql8 = "INSERT INTO events (title, location, imageurl, date, time) VALUES ('"+etitle+"', '"+elocation+"', '"+eimageurl+"','"+edate+"','"+etime+"')";
         db.any(sql8)
-            .then(data => {
-                console.log('New Event Inserted Executed'); // print data;
-                response.render('newsubmit', { title: 'New Event Registered'});
-        })
+        .then(data => {
+            
+            const db=pgp(con);
+            db.connect()
+            .then(function (obj) {
+                obj.done();
+                console.log("ReConnected!");// success, release connection;
+            })
+            .catch(function (error) {
+                console.log("ERROR:", error.message);
+            });    
+            var sql7 = "select id from events where title='"+etitle+"'";
+            db.any(sql7)
+            .then(data1 => {
+            maxid=data1;
+            console.log(data1);
+            console.log('New Event Inserted Executed'); // print data;
+                response.redirect("/events/"+maxid[0].id);
+                })
+            .   catch(error => {
+                    console.log('ERROR:', error); // print the error;
+                });
+        
+        
+                })
             .catch(error => {
                 console.log('ERROR:', error); // print the error;
             });
