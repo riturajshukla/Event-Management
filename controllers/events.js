@@ -13,6 +13,7 @@ function eventDetail(request, response) {
                eventModels.getById(eventID, function(eventdata) {
                     event = eventdata[0];
                     console.log('task 1');
+                //    console.log(event);
                     callback();
                 });
             },

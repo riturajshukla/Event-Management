@@ -31,12 +31,13 @@ db.connect()
 
 
 var sql = "select * from events where id="+id;
-
+console.log(sql);
 db.any(sql)
     .then(data => {
         allEvents=data;
-        callback(data);
         console.log("Events Executed");
+        callback(data);
+
   
     })
     .catch(error => {

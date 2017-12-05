@@ -16,6 +16,7 @@ const donateControllers = require('./controllers/donate.js');
 const neweventControllers = require('./controllers/newevent.js');
 const eventControllers = require('./controllers/events.js');
 const rsvpControllers = require('./controllers/rsvp.js');
+const newsubmitControllers = require('./controllers/newsubmit.js');
 
 
 // Configure our "templating engine", which is
@@ -40,6 +41,7 @@ app.get('/events/new', neweventControllers.newevent);
 app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
 app.post('/events/rsvp', rsvpControllers.rsvp);
+app.post('/events/newsubmit', newsubmitControllers.newsubmit);
 
 
 app.get('/index.html', indexControllers.index);

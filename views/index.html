@@ -5,8 +5,8 @@
 
 <ul id="events">
  {% for i in range(0, items.length) -%}
-<li class="event" id="event-{{i}}">
-    <a href="/events/{{i}}" id="title">{{ items[i].title}}</a> <br>
+<li class="event" id="event-{{items[i].id}}">
+    <a href="/events/{{items[i].id}}" id="title">{{ items[i].title}}</a> <br>
     <b>Location:</b> {{ items[i].location }} <br>
     <b>Date:</b> {{ items[i].date }} <br>
     <time>

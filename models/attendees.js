@@ -32,12 +32,12 @@ db.connect()
     });
 
 var sql = "select * from attendees where regevent="+id;
-console.log(sql);
+//console.log(sql);
 db.any(sql)
     .then(data => {
        allattendees=data;
-       callback(data);
-       console.log("Attendees Executed");
+        console.log("Attendees Executed");
+        callback(data);
          // print data;
     })
     .catch(error => {
