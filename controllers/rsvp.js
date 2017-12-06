@@ -2,6 +2,7 @@
 // Create a function which is a "controller", it
 // handles a request, writing the response.
 function rsvp(request, response) {
+const errorsRSVP = [];
 
 var email=request.body.email;
 var eventid=request.body.eventid;
@@ -59,8 +60,8 @@ if(string.toString().indexOf(substring.toString()) !== -1 && string.match(mailfo
     else
     {
         console.log('Invalid Email'); // print data;
-        response.render('rsvp', { title: 'Invalid Email'});
-        
+        errorsRSVP.push('Invalid email');
+        response.render('rsvp', {errorsRSVP})
     }
 
 }
