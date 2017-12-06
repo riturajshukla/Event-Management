@@ -1,11 +1,18 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
-
   <h1 id="title">
     {{event.title}}
   </h1>
+  
+  {% if RSVPerrors %}
+    <ul class="form-errors">
+        {% for error in RSVPerrors %}
+            <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+  {% endif %}
+  
   <img src="{{event.imageurl}}" id="image"><br>
   
   <div class="event-details">
@@ -25,7 +32,7 @@
       <span id="date"><b> Date: </b></b>{{event.date}}</span>
   </td>
   <td class="right">
-    <form action="/events/rsvp" method="post">
+    <form method="POST">
       <input type="email" name="email" id="email"></input>
       <input type="hidden" name="eventid" value="{{event.id}}"></input>
       <button type="submit" name="submit">Submit</button>

@@ -41,14 +41,15 @@ app.get('/donate', donateControllers.donate);
 app.get('/events/new', neweventControllers.newevent);
 app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
+app.post('/events/:eventID', eventControllers.RSVPcheck);
 app.post('/events/rsvp', rsvpControllers.rsvp);
 app.post('/events/newsubmit', newsubmitControllers.newsubmit);
 app.get('/api/events', apiControllers.api);
 
 
 app.get('/index.html', indexControllers.index);
-var serveStatic = require('serve-static')
-app.use(serveStatic('views'))
+var serveStatic = require('serve-static');
+app.use(serveStatic('views'));
 // Start up the application and listen on the specified
 // port, or default to port 4000.
 app.listen(process.env.PORT || 4000);
