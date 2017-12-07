@@ -8,12 +8,10 @@ function eventDetail(request, response) {
     var event;
     var attendees;
     asyncStuff.series([ 
-        
         function(callback) {
                eventModels.getById(eventID, function(eventdata) {
                     event = eventdata[0];
                     console.log('task 1');
-                //    console.log(event);
                     callback();
                 });
             },
@@ -25,7 +23,6 @@ function eventDetail(request, response) {
                 });
             }
         ],
-
     function(err) { //This function gets called after the two tasks have called their "task callbacks"
             if (err) return (err);
             const contextData = 
@@ -36,10 +33,11 @@ function eventDetail(request, response) {
                 donation: eventModels.abTest()
                 };
             response.render('event-detail', contextData);
+            console.log('task 3');
         });
-    
-    
 }
+
+
 module.exports = {
     eventDetail,
 };
