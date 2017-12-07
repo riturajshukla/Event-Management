@@ -13,7 +13,7 @@ function eventDetail(request, response) {
                eventModels.getById(eventID, function(eventdata) {
                     event = eventdata[0];
                     console.log('task 1');
-                //    console.log(event);
+                  console.log(request.query.var);
                     callback();
                 });
             },
@@ -33,11 +33,15 @@ function eventDetail(request, response) {
                 title: event.title,
                 event: event,
                 attendees: attendees,
-                donation: eventModels.abTest()
+                donation: "Donate",
                 };
                 
                 /*add here*/
-                
+             if (request.query.var==="1") {
+                 contextData.donation = "Support";
+             }  else{
+                 contextData.donation = "Donate";
+             } 
                 
             response.render('event-detail', contextData);
         });
@@ -45,49 +49,8 @@ function eventDetail(request, response) {
     
 }
 
-function eventSupport(request, response) {
-    
-    const eventID = parseInt(request.params.eventID, 10);
-    var event;
-    var attendees;
-    asyncStuff.series([ 
-        
-        function(callback) {
-               eventModels.getById(eventID, function(eventdata) {
-                    event = eventdata[0];
-                    console.log('task 1');
-                //    console.log(event);
-                    callback();
-                });
-            },
-         function(callback) {
-                attendeeModels.attendeesgetById(eventID, function(attendeesdata) {
-                    attendees = attendeesdata;
-                    console.log('task 2');
-                    callback();
-                });
-            }
-        ],
 
-    function(err) { //This function gets called after the two tasks have called their "task callbacks"
-            if (err) return (err);
-            const contextData = 
-                {
-                title: event.title,
-                event: event,
-                attendees: attendees,
-                donation: eventModels.abTest()
-                };
-                
-                /*add here*/
-                
-                
-            response.render('event-detail-support', contextData);
-        });
-    
-    
-}
 module.exports = {
     eventDetail,
-    eventSupport,
+   // eventSupport,
 };
