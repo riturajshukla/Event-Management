@@ -50,15 +50,3 @@ pgp.end();
 module.exports = {
     attendeesgetById,
 };
-/*    
-    var attendeelist=[];
-    var j=0;
-    for (let i = 0; i < allattendees.length; i += 1) 
-    {
-        if (id === allattendees[i].regevent) 
-        {
-            attendeelist[j]=allattendees[i];
-            j=j+1;
-        }
-    }
-*/

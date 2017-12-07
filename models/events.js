@@ -1,10 +1,6 @@
 var allEvents = [];
 
 function getById(id, callback) {
-    
-    
-    
-
 const con = {
   host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
   user: 'xrxlcgkeiqnbpa',
@@ -32,17 +28,14 @@ db.connect()
         console.log("ERROR:", error.message);
     });    
 
-
-    var sql = "select * from events where id="+id;
+var sql = "select * from events where id="+id;
 
 console.log(sql);
 db.any(sql)
     .then(data => {
-        allEvents=data;
         console.log("Events Executed");
         callback(data);
 
-  
     })
     .catch(error => {
         console.log('ERROR:', error); // print the error;
