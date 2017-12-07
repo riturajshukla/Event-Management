@@ -8,6 +8,8 @@ function api(request, response) {
     var event;
     var attendees;
     var attendeeslistbyevent=[];
+    var k;
+    var a=[];
     asyncStuff.series([ 
         function(callback) {
                apieventModels.apigetById(query, function(eventdata) {
@@ -21,23 +23,27 @@ function api(request, response) {
                 apiattendeeModels.apiattendeesgetById(event, function(attendeesdata) {
                     attendees = attendeesdata;
                     console.log('api task 2');
-                    
                     for (let i = 0; i < event.length; i += 1) 
                     {
                         attendeeslistbyevent[i]="";
+                        k=0;
+                        a[i]=[];
                         for (let j = 0; j < attendees.length; j += 1) 
                         {
                             if(attendees[j].regevent===event[i].id)
                             {
                                 
-                                if(attendeeslistbyevent[i])
-                                {
-                                     attendeeslistbyevent[i]=attendeeslistbyevent[i]+',"'+attendees[j].emailid+'"';
-                                }
-                                else
-                                {
-                                    attendeeslistbyevent[i]='"'+attendees[j].emailid+'"'; 
-                                }
+//                                if(attendeeslistbyevent[i])
+  //                              {
+                                   //  attendeeslistbyevent[i]=attendeeslistbyevent[i]+',"'+attendees[j].emailid+'"';
+                                     a[i][k]=attendees[j].emailid;
+                                     console.log(a[i][k]);
+                                     k=k+1;
+    //                            }
+//                                else
+  //                              {
+    //                                attendeeslistbyevent[i]='"'+attendees[j].emailid+'"'; 
+      //                          }
                             }
                         }
       //                  console.log("Event: "+event[i].title+" "+attendeeslistbyevent[i]);
@@ -54,8 +60,7 @@ function api(request, response) {
                 {
                 title: "API",
                 event: event,
-                attendees: attendeeslistbyevent, 
-                count:0
+                attendees: a, 
                 };
             response.render('api', contextData);
         });
