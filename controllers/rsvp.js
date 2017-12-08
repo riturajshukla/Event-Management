@@ -1,27 +1,114 @@
+const eventModels = require('../models/events.js');
+const attendeeModels = require('../models/attendees.js');
+var asyncStuff = require('async');
 
-// Create a function which is a "controller", it
-// handles a request, writing the response.
-function rsvp(request, response) {
-const errorsRSVP = [];
+function eventDetail(request, response) {
+    
+    const eventID = parseInt(request.params.eventID, 10);
+    var event;
+    var attendees;
+    asyncStuff.series([ 
+        function(callback) {
+               eventModels.getById(eventID, function(eventdata) {
+                    event = eventdata[0];
+                    console.log('task 1');
+                    callback();
+                });
+            },
+         function(callback) {
+                attendeeModels.attendeesgetById(eventID, function(attendeesdata) {
+                    attendees = attendeesdata;
+                    console.log('task 2');
+                    callback();
+                });
+            }
+        ],
+    function(err) { //This function gets called after the two tasks have called their "task callbacks"
+            if (err) return (err);
+            const contextData = 
+                {
+                title: event.title,
+                event: event,
+                attendees: attendees,
+                donation: eventModels.abTest()
+                };
+                
+                /*add here*/
+                
+                
+            response.render('event-detail', contextData);
+            console.log('task 3');
+        });
+}
 
-var email=request.body.email;
-var eventid=request.body.eventid;
-var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-var string=email.toLowerCase();
-var substring = "yale.edu";
-console.log( string.match(mailformat));
-console.log(string.toString().indexOf(substring.toString()));
-if(string.toString().indexOf(substring.toString()) !== -1 && string.match(mailformat))
-{
-        const con = {
+
+function eventSupport(request, response) {
+    
+    const eventID = parseInt(request.params.eventID, 10);
+    var event;
+    var attendees;
+    asyncStuff.series([ 
+        
+        function(callback) {
+               eventModels.getById(eventID, function(eventdata) {
+                    event = eventdata[0];
+                    console.log('task 1');
+                //    console.log(event);
+                    callback();
+                });
+            },
+         function(callback) {
+                attendeeModels.attendeesgetById(eventID, function(attendeesdata) {
+                    attendees = attendeesdata;
+                    console.log('task 2');
+                    callback();
+                });
+            }
+        ],
+
+    function(err) { //This function gets called after the two tasks have called their "task callbacks"
+            if (err) return (err);
+            const contextData = 
+                {
+                title: event.title,
+                event: event,
+                attendees: attendees,
+                donation: eventModels.abTest()
+                };
+        response.render('event-detail-support', contextData);
+        });
+}
+
+function RSVPcheck(request, response) {
+    const RSVPerrors = [];
+    console.log("Valid Email");  
+    var email = request.body.email;
+    var eventid=request.body.eventid;
+    if (request.method === 'POST') {
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var string = email.toLowerCase();
+        var substring = "@yale.edu";
+        if (string.match(mailformat) === false) {
+            RSVPerrors.push('Not an email address, buddy');
+            console.log('Not an email address');
+        }
+        else if (string.toString().indexOf(substring.toString()) === -1) {
+            RSVPerrors.push('You are not from Yale, dude');
+            console.log('Not Yale.edu');
+        } 
+        else 
+        {
+            
+          //Database connection start
+          const con = {
           host: 'ec2-107-22-162-82.compute-1.amazonaws.com',
           user: 'xrxlcgkeiqnbpa',
           password: '4bd2b4bff69cb3c5ad99eb6297dee3ea3b0e4cb9db5d0e53061f18f49165762d',
           database: 'ddvbg4h4mr6qc7',
           port:'5432',
           ssl: 'TRUE'
-        
-        };
+              
+          };
         
         const options = {
             noWarnings: true
@@ -43,29 +130,26 @@ if(string.toString().indexOf(substring.toString()) !== -1 && string.match(mailfo
             });    
         
         
-        //var sql = "select * from events";
         var sql8 = "INSERT INTO attendees (emailid, regevent) VALUES ('"+email+"', '"+eventid+"')";
-        //console.log(sql8);
         db.any(sql8)
             .then(data => {
                 console.log('RSVP Executed'); // print data;
-                response.render('rsvp', { title: 'Registered'});
         })
             .catch(error => {
                 console.log('ERROR:', error); // print the error;
             });
         
         pgp.end();
+        
     }
-    else
-    {
-        console.log('Invalid Email'); // print data;
-        errorsRSVP.push('Invalid email');
-        response.render('rsvp', {errorsRSVP})
-    }
-
+}
+/*response.render('event-detail', {
+        RSVPerrors,
+    });*/
 }
 
 module.exports = {
-    rsvp,
+    eventDetail,
+    eventSupport,
+    RSVPcheck
 };

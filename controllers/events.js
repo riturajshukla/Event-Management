@@ -75,39 +75,11 @@ function eventSupport(request, response) {
                 attendees: attendees,
                 donation: eventModels.abTest()
                 };
-                
-                /*add here*/
-                
-                
-            response.render('event-detail-support', contextData);
+        response.render('event-detail-support', contextData);
         });
-}
-
-function RSVPcheck(request, response) {
-    const RSVPerrors = [];
-    if (request.method === 'POST') {
-        var email = request.body.email;
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        var string = email.toLowerCase();
-        var substring = "@yale.edu";
-        if (string.match(mailformat) === false) {
-            RSVPerrors.push('Not an email address, buddy');
-            console.log('Not an email address');
-        }
-        else if (string.toString().indexOf(substring.toString()) === -1) {
-            RSVPerrors.push('You are not from Yale, dude');
-            console.log('Not Yale.edu');
-        } else {
-            //DATABASE CONNECTION
-        }
-    }
-    response.render('event-detail', {
-        RSVPerrors,
-    });
 }
 
 module.exports = {
     eventDetail,
-    eventSupport,
-    RSVPcheck
+    eventSupport
 };
