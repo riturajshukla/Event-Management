@@ -43,7 +43,8 @@ app.post('/events/new', neweventControllers.newevent);
 app.get('/events/:eventID', eventControllers.eventDetail);
 app.get('/events/:eventID/var', eventControllers.eventSupport);
 app.post('/events/:eventID', rsvpControllers.RSVP);
-//app.post('/events/rsvp', rsvpControllers.rsvp);
+app.post('/events/:eventID', eventControllers.RSVPcheck);
+app.post('/events/rsvp', rsvpControllers.rsvp);
 app.post('/events/newsubmit', newsubmitControllers.newsubmit);
 app.get('/api/events', apiControllers.api);
 
