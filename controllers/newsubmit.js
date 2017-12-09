@@ -2,6 +2,7 @@
 // Create a function which is a "controller", it
 // handles a request, writing the response.
 function newsubmit(request, response) {
+console.log("New Submit Start");
 var maxid=[];
 var etitle=request.body.title;
 var elocation=request.body.location;
@@ -83,5 +84,5 @@ else
 }
 
 module.exports = {
-    newsubmit,
+    newsubmit
 };

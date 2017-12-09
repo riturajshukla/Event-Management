@@ -17,7 +17,7 @@ const donateControllers = require('./controllers/donate.js');
 const neweventControllers = require('./controllers/newevent.js');
 const eventControllers = require('./controllers/events.js');
 //const rsvpControllers = require('./controllers/rsvp.js');
-const newsubmitControllers = require('./controllers/newsubmit.js');
+//const newsubmitControllers = require('./controllers/newsubmit.js');
 const apiControllers = require('./controllers/api.js');
 
 
@@ -44,11 +44,10 @@ app.get('/api/events', apiControllers.api);
 
 app.get('/events/new', neweventControllers.newevent);
 app.post('/events/new', neweventControllers.newevent);
-
 app.get('/events/:eventID', eventControllers.eventDetail);
 app.post('/events/:eventID', eventControllers.RSVPcheck);
 app.get('/events/:eventID/var', eventControllers.eventSupport);
-app.post('/events/newsubmit', newsubmitControllers.newsubmit);
+//app.post('/events/newsubmit', newsubmitControllers.newsubmit);
 
 app.get('/index.html', indexControllers.index);
 var serveStatic = require('serve-static');

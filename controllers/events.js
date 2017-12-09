@@ -207,8 +207,6 @@ function eventSupport(request, response) {
         });
 };
 
-
-
 module.exports = 
 {
     eventDetail,
