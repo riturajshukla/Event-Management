@@ -31,7 +31,7 @@ db.connect()
 
     if(query)
     {
-    var sql = "select * from events where LOWER(title) like '%"+query+"%'";
+    var sql = "select * from events where LOWER(title) like '%"+query.toLowerCase()+"%'";
     }
     else
     {
