@@ -46,7 +46,10 @@ function newevent(request, response) {
         }
         if (validator.matches(request.body.image, ".png") === false &&
             validator.matches(request.body.image, ".jpg") === false &&
-            validator.matches(request.body.image, ".gif") === false) {
+            validator.matches(request.body.image, ".gif") === false &&
+            validator.matches(request.body.image, ".PNG") === false &&
+            validator.matches(request.body.image, ".JPG") === false &&
+            validator.matches(request.body.image, ".GIF") === false) {
             errors.push('Definitely not an image');
         }
         
